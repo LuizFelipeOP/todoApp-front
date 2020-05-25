@@ -39,10 +39,33 @@
 
 .header-wrapper{
   background-color: #c6ffec;
-  height: 70px;
+  height: 100px;
 }
 .list{
-  background-color: #282c34;
-  height: 232px;
-  margin: 55px 60px 42px 60px;
+  background-color: #eff3fc;
+}
+@media (max-width: 615px){
+  .header-wrapper{
+    background-color: #c6ffec;
+    height: 70px;
+  }
+  .list{
+    height: 232px;
+    margin: 55px 60px 42px 60px;
+  }
+  .navigation-wrapper > .left-collumn{
+      order: 2;
+      margin-top: 10px;
+      margin-bottom: 15px; 
+  }
+  .navigation-wrapper > .center-collumn{
+      order: 1;
+      width: 100%;
+  }
+  .navigation-wrapper > .right-collumn{
+      order: 3;
+      margin-top: 15px;
+  }
+
+
 }
