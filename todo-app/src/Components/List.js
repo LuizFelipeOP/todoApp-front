@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
-
-const ListItem = props => {
-    const item = props.tarefas.forEach((tarefa, index) => {
-        console.log(tarefa.descricao)
-        let tarefaDesc = tarefa.descricao.toString()
-
-        return ;
-    });
-
-    //return {item};
-
-}
+import React, { Component, Fragment } from 'react';
+import FormNewTask from './FormInputTask';
 const ListBody = props => {
-    const lista = props.list.map((item, index) => {
+    debugger
+    const lista = props.list.map((item, indexList) => {
         return (
-            <ul key={item.list[index].id}>
-                {item.list[index].list_name}
-                {
-                    item.list[index].tarefas.map((tarefa, index) => {
-                        return (
-                        <li>{tarefa.descricao}</li>
-                        )
-                    })
-
-                }
-            </ul>
+            <Fragment>
+                <ul key={indexList}>
+                    {item.list_name}
+                    {
+                        item.tarefas.map((tarefa, indexItem) => {
+                            return (
+                            <li key={indexItem}>{tarefa.descricao}</li>
+                            )
+                        })
+    
+                    }
+                </ul>
+                <FormNewTask id={indexList} list={item} submitListener = { props.submitListener} />
+            </Fragment>
         );
     });
 
@@ -38,11 +31,13 @@ const ListBody = props => {
 }
 class List extends Component {
     render() {
-        const {list } = this.props;
+        const { list } = this.props;
 
         return (
-            <ListBody list={list} /> 
-        );
+            <Fragment>
+                <ListBody list={list} submitListener={this.props.submitListener}/> 
+            </Fragment>
+        ); 
     }
 }
 export default List;
