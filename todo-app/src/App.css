@@ -49,9 +49,16 @@
     background-color: #c6ffec;
     height: 70px;
   }
-  .list{
-    height: 232px;
+  .list-wrapper{
+    height: auto;
     margin: 55px 60px 42px 60px;
+  }
+  .list-wrapper > .list{
+    padding-bottom: 10px;
+  }
+  .list-wrapper > .list > ul > li{
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   .navigation-wrapper > .left-collumn{
       order: 2;

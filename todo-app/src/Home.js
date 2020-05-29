@@ -47,10 +47,8 @@ class Home extends Component{
           
         </div>
         <Button/>
-        <div className="list">
           <List list={this.state.todos} submitListener={this.submitListener} ></List>
-        </div>   
-      </div>
+        </div>
 
       {/* <Anime/> */}
       </Fragment>

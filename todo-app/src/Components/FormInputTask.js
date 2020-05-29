@@ -7,7 +7,6 @@ class List extends Component {
         this.stateInicial = {
             descricao: '' 
         }
-        // debugger
         this.state = this.stateInicial;
     }
     inputListenerTask = event => {
@@ -19,7 +18,6 @@ class List extends Component {
     }
     onSave = (event) => {
         event.preventDefault();
-    debugger
         this.props.submitListener(this.state, this.props.id);
         this.setState(this.stateInicial);
     }
