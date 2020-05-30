@@ -5,30 +5,42 @@ class List extends Component {
         super(props);
 
         this.stateInicial = {
-            descricao: '' 
+            task: [
+                {
+                    name: '',
+                    description: ''
+                }
+            ]
+
         }
         this.state = this.stateInicial;
     }
     inputListenerTask = event => {
         const { name, value } = event.target;
         this.setState({
-                [name]: value
+            task: [
+                {
+                    name: value,
+                    description: value
+                }
+            ]
         });
 
     }
     onSave = (event) => {
         event.preventDefault();
-        this.props.submitListener(this.state, this.props.id);
+        debugger
+        this.props.submitListenerTask(this.props.list._id, this.state);
         this.setState(this.stateInicial);
     }
-    
+
     render() {
-        const { descricao } = this.state;
+        const { description } = this.state;
 
         return (
             <form onSubmit={this.onSave}>
-                <input value={descricao} name="descricao" type="text"  onChange={this.inputListenerTask}/>
-            </form> 
+                <input value={description} name="description" type="text" onChange={this.inputListenerTask} />
+            </form>
         );
     }
 }

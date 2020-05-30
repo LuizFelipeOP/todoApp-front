@@ -44,6 +44,9 @@
 .list{
   background-color: #eff3fc;
 }
+.list > ul{
+  list-style-type: none;
+}
 @media (max-width: 615px){
   .header-wrapper{
     background-color: #c6ffec;
@@ -56,10 +59,17 @@
   .list-wrapper > .list{
     padding-bottom: 10px;
   }
-  .list-wrapper > .list > ul > li{
+  .list-wrapper > .list > ul > .task-wrapper > .taskItem{
     padding-top: 6px;
     padding-bottom: 6px;
   }
+  .list-wrapper > .list > ul{
+    padding-left: 0px;
+  }
+  .task-wrapper{
+
+  }
+
   .navigation-wrapper > .left-collumn{
       order: 2;
       margin-top: 10px;
@@ -73,6 +83,7 @@
       order: 3;
       margin-top: 15px;
   }
+
 
 
 }
