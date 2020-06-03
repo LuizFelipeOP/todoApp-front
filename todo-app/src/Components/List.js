@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import FormNewTask from './FormInputTask';
 import TaskListItem from './TaskListItem';
-import anime from 'animejs';
+import { FiTrash2 } from 'react-icons/fi';
 
 const ListBody = props => {
 
@@ -9,6 +9,7 @@ const ListBody = props => {
         return (
             <Fragment>
                 <div className="list">
+                    <button onClick={function () { props.removeList(item._id) }}><FiTrash2 /></button>
                     <ul key={indexList}>
                         {item.name}
                         {
@@ -39,7 +40,13 @@ class List extends Component {
 
         return (
             <Fragment>
-                <ListBody selectTask={this.selectTask} list={list} submitListenerTask={this.props.submitListenerTask} removeTask={this.props.removeTask} />
+                <ListBody
+                    selectTask={this.selectTask}
+                    list={list}
+                    submitListenerTask={this.props.submitListenerTask}
+                    removeTask={this.props.removeTask}
+                    removeList={this.props.removeList} />
+
             </Fragment>
         );
     }

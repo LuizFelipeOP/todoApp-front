@@ -16,7 +16,7 @@ class List extends Component {
         this.state = this.stateInicial;
     }
     inputListenerTask = event => {
-        const { name, value } = event.target;
+        const { value } = event.target;
         this.setState({
             task: [
                 {
@@ -29,9 +29,9 @@ class List extends Component {
     }
     onSave = (event) => {
         event.preventDefault();
-        debugger
         this.props.submitListenerTask(this.props.list._id, this.state);
         this.setState(this.stateInicial);
+        event.target.firstChild.value = "";
     }
 
     render() {
