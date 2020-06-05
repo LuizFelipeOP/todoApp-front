@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FiX, FiEdit2 } from 'react-icons/fi';
+import ModalClass from './Modal/ModalClass';
 
 class TaskListItem extends Component {
 
@@ -15,30 +16,20 @@ class TaskListItem extends Component {
 
 
     }
-    openEditFormTask = (task_id) => {
-        let taskClassName = '.task-item_' + task_id;
-        let tasKItem = document.querySelector(taskClassName.toString());
-        let taskDescription = document.querySelector(taskClassName.toString()).innerText;
-        document.querySelector(taskClassName.toString()).hidden = true
 
-        let wrapperClassName = '.task-wrapper_' + task_id;
-        let wrapperItem = document.querySelector(wrapperClassName.toString());
-        // let newInput = document.querySelector("input");
-        // let newInputClassName = '.edit-task_' + task_id;
-        // newInput.classList.add(newInputClassName.toString());
-
-        // newInput.value = taskDescription;
-        // tasKItem.replaceWith(newInput)
-        debugger
-
-    }
     render() {
         return (
-            <div className={"task-wrapper  task-wrapper_" + this.props.id_task}>
+            <div className={"task-wrapper"}>
                 <li className={"task-item task-item_" + this.props.id_task} onClick={this.selectTask} key={this.props.taskId}>{this.props.description} </li>
-                <button onClick={() => { this.openEditFormTask(this.props.id_task) }}>
-                    <FiEdit2 />
-                </button>
+                <ModalClass
+                    modalType={'edit'}
+                    buttonClass={FiEdit2}
+                    list={this.props.item}
+                    title={'Edite a tarefa'}
+                    id_task={this.props.id_task}
+                    submitListenerList={this.submitListenerList}
+                    description={this.props.description}
+                />
                 <button onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
                     <FiX />
                 </button>

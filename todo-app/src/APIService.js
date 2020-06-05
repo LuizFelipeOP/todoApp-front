@@ -56,7 +56,7 @@ const ApiService = {
         const headers = {
             'Content-Type': 'application/json',
         }
-        return axios.delete(`https://to-do-app-api.herokuapp.com/list/${id_list}`, headers)
+        return axios.delete(`https://to-do-app-api.herokuapp.com/list/${id_list}/remove`, headers)
             .then(res => res.data)
             .catch(
                 error =>
