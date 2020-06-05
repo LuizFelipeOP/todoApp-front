@@ -35,13 +35,14 @@ class TaskListItem extends Component {
     render() {
         return (
             <div className={"task-wrapper  task-wrapper_" + this.props.id_task}>
-                <li className={"task-item task-item_" + this.props.id_task} onClick={this.selectTask} key={this.props.taskId}>{this.props.description} </li>
-                <button onClick={() => { this.openEditFormTask(this.props.id_task) }}>
-                    <FiEdit2 />
-                </button>
-                <button onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
-                    <FiX />
-                </button>
+                <li className={"task-item task-item_" + this.props.id_task} onClick={this.selectTask} key={this.props.taskId}>{this.props.description} 
+                    <button id="edit" onClick={() => { this.openEditFormTask(this.props.id_task) }}>
+                        <FiEdit2 />
+                    </button>
+                    <button id="delete" onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
+                        <FiX />
+                    </button>
+                </li>
             </div>
         );
     }

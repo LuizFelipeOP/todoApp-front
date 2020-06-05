@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from 'react-bootstrap/Button'
 import { FiPlus } from 'react-icons/fi';
 
 const ModalCreate = (props) => {
@@ -12,9 +11,9 @@ const ModalCreate = (props) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <button id="add" onClick={handleShow}>
                 <FiPlus />
-            </Button>
+            </button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

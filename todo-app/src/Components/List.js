@@ -9,18 +9,22 @@ const ListBody = props => {
         return (
             <Fragment>
                 <div className="list">
-                    <button onClick={function () { props.removeList(item._id) }}><FiTrash2 /></button>
-                    <ul key={indexList}>
-                        {item.name}
-                        {
-                            item.task.map((tarefa, indexItem) => {
-                                return (
-                                    <TaskListItem taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
-                                )
-                            })
+                    <button id="delete-list" onClick={function () { props.removeList(item._id) }}><FiTrash2 /></button>
+                        <ul key={indexList}>
+                            <p>{item.name}</p>
+                            {
+                                item.task.map((tarefa, indexItem) => {
+                                    return (
+                                        <label class="container">
+                                            <TaskListItem taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
+                                            <input type="checkbox"/>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    )
+                                })
 
-                        }
-                    </ul>
+                            }
+                        </ul>
                     <FormNewTask id={indexList} list={item} submitListenerTask={props.submitListenerTask} />
                 </div>
             </Fragment>

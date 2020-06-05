@@ -1,0 +1,83 @@
+#edit {
+    margin-left: 10px;
+    border-radius: 8px;
+    padding: 1px 5px 5px 5px;
+}
+
+#delete {
+    margin-left: 10px;
+    border-radius: 8px;
+    padding: 1px 5px 5px 5px;
+}
+
+#delete-list {
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 1px 5px 5px 5px;
+}
+
+#add {
+    margin-top: 5px;
+}
+
+.switch_container {
+    float: right;
+    margin-bottom: -28px;
+}
+
+.switch {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+  
+.switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.switch--shadow + label {
+    padding: 2px;
+    width: 40px;
+    height: 15px;
+    background-color: #dddddd;
+    border-radius: 10px;
+}
+
+.switch--shadow + label:before,
+.switch--shadow + label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: '';
+}
+
+.switch--shadow + label:before {
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    transition: all 0.4s;
+}
+
+.switch--shadow + label:after {
+    width: 17px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s;
+}
+
+.switch--shadow:checked + label:before {
+    background-color: #8ce196;
+}
+
+.switch--shadow:checked + label:after {
+    transform: translateX(21px);
+}

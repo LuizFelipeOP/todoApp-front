@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { FiPlus } from 'react-icons/fi';
 
 class Button extends Component {

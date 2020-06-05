@@ -1,7 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
+import './Styles/Button.css';
+import './Styles/DarkMode.css';
+import './Styles/LightMode.css';
+import './Styles/Header.css';
+import './Styles/List.css';
+import './Styles/Modal.css';
 import List from './Components/List';
 import ModalClass from './Components/ModalClass';
+import ThemeButton from './Components/ThemeButton';
 import ApiService from './APIService';
 
 class Home extends Component {
@@ -110,15 +117,17 @@ class Home extends Component {
       <Fragment>
         <div className="App">
           <div className="header-wrapper">
-
+            <ThemeButton/>
+              <h2>To do App</h2>
           </div>
-
-          <ModalClass title={'Crie uma lista de tarefas'} submitListenerList={this.submitListenerList} />
-          <List list={this.state.todos}
-            submitListenerTask={this.submitListenerTask}
-            removeTask={this.removeTask}
-            removeList={this.removeList}
-          ></List>
+          <div class="background">
+            <ModalClass title={'Crie uma lista de tarefas'} submitListenerList={this.submitListenerList} />
+            <List list={this.state.todos}
+              submitListenerTask={this.submitListenerTask}
+              removeTask={this.removeTask}
+              removeList={this.removeList}
+            ></List>
+          </div>
         </div>
 
         {/* <Anime/> */}
