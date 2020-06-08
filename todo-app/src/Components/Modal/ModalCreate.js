@@ -12,10 +12,11 @@ const ModalCreate = (props) => {
 
     return (
         <>
-            <button onClick={handleShow}>
-                <FiPlus />
-            </button>
-
+            <label> Adicione uma lista
+                <button id="add" onClick={handleShow}>
+                    <FiPlus />
+                </button>
+            </label>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.title}</Modal.Title>
@@ -23,8 +24,8 @@ const ModalCreate = (props) => {
                 <Modal.Body>
                     <form >
                         <input name="name" type="text" onChange={props.inputListenerList} />
-                        <button onClick={props.onSave}><FiCheck /></button>
-                        <button onClick={handleClose}><FiX /></button>
+                        <button id="ok" onClick={props.onSave}><FiCheck /></button>
+                        <button id="delete" onClick={handleClose}><FiX /></button>
                     </form>
                 </Modal.Body>
             </Modal>

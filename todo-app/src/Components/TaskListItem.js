@@ -30,7 +30,7 @@ class TaskListItem extends Component {
                     submitListenerList={this.submitListenerList}
                     description={this.props.description}
                 />
-                <button onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
+                <button id="delete" onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
                     <FiX />
                 </button>
             </div>

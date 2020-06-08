@@ -18,5 +18,4 @@ export const darkTheme = {
     listColor: '#023E8A',
     headerColor: '#486F9C',
     gradient: 'linear-gradient(#091236, #1E215D)',
-
 }

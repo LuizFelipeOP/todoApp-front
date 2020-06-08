@@ -13,7 +13,7 @@ const ModalCreate = (props) => {
 
     return (
         <>
-            <button onClick={handleShow}>
+            <button id="edit" onClick={handleShow}>
                 <FiEdit2 />
             </button>
 
@@ -24,7 +24,7 @@ const ModalCreate = (props) => {
                 <Modal.Body>
                     <form >
                         <input value={props.description} name="name" type="text" onChange={props.inputListenerList} />
-                        <button onClick={handleShow}><FiX /></button>
+                        <button id="delete" onClick={handleShow}><FiX /></button>
                     </form>
                 </Modal.Body>
             </Modal>

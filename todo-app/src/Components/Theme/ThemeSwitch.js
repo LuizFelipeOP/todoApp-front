@@ -21,7 +21,7 @@ function ThemeSwitch() {
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <>
                 <GlobalStyles />
-                <button className="toggleThemeButton" onClick={toggleTheme} >
+                <button id="theme" className="toggleThemeButton" onClick={toggleTheme} >
                     <FiSun />
                 </button>
             </>
