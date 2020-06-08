@@ -12,7 +12,7 @@ const ModalCreate = (props) => {
 
     return (
         <>
-            <button onClick={handleShow}>
+            <button id="edit" onClick={handleShow}>
                 <FiEdit2 />
             </button>
 

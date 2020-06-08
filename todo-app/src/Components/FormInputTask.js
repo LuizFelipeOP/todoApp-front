@@ -39,7 +39,7 @@ class List extends Component {
 
         return (
             <form onSubmit={this.onSave}>
-                <input value={description} name="description" type="text" onChange={this.inputListenerTask} />
+                <label>Adicionar mais tarefas:</label><input value={description} name="description" type="text" onChange={this.inputListenerTask} />
             </form>
         );
     }

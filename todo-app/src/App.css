@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .App {
   text-align: center;
 }
@@ -40,6 +42,7 @@
 .header-wrapper{
   height: 100px;
 }
+
 .background {
     background-color: #DDD8C4;
 }
@@ -68,6 +71,7 @@ button {
 .list > ul{
   list-style-type: none;
 }
+
 @media (max-width: 615px){
   .header-wrapper{
     height: 70px;
@@ -91,7 +95,7 @@ button {
   }
   .list-wrapper{
     height: auto;
-    margin: 55px 60px 42px 60px;
+    margin: 0 30px 20px 30px;
   }
   .list-wrapper > .list{
     padding-bottom: 10px;

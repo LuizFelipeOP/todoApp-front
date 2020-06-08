@@ -10,13 +10,17 @@ const ListBody = props => {
         return (
             <Fragment>
                 <div className="list">
-                    <button onClick={() => { props.removeList(item._id) }}><FiTrash2 /></button>
+                    <button id="delete-list" onClick={() => { props.removeList(item._id) }}><FiTrash2 /></button>
                     <ul key={indexList}>
-                        {item.name}
+                        <p>{item.name}</p>
                         {
                             item.task.map((tarefa, indexItem) => {
                                 return (
-                                    <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
+                                    <label class="container">
+                                        <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
+                                        <input type="checkbox" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 )
                             })
                         }
@@ -47,7 +51,6 @@ class List extends Component {
                     submitListenerTask={this.props.submitListenerTask}
                     removeTask={this.props.removeTask}
                     removeList={this.props.removeList} />
-
             </Fragment>
         );
     }

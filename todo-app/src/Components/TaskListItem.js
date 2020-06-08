@@ -31,7 +31,7 @@ class TaskListItem extends Component {
                     editTask={this.props.editTask}
                     description={this.props.description}
                 />
-                <button onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
+                <button id="delete" onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >
                     <FiX />
                 </button>
             </div>

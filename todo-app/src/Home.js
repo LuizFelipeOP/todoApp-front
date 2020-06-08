@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
+import './Styles/Button.css';
+import './Styles/Header.css';
+import './Styles/List.css';
+import './Styles/Modal.css';
 import List from './Components/List';
 import ModalClass from './Components/Modal/ModalClass';
 import ApiService from './APIService';
@@ -115,8 +119,8 @@ class Home extends Component {
       <Fragment>
         <div className="App">
           <div className="header-wrapper">
-            <h3>to-do App</h3>
             <ThemeSwitch />
+            <h2 id="title">To-do App</h2>
           </div>
 
           <ModalClass
