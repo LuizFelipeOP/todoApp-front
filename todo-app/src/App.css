@@ -129,6 +129,7 @@ button {
   opacity: 1;
   visibility: visible;
 }
+
 .modal.off {
   opacity: 0;
   visibility: hidden;
@@ -142,19 +143,23 @@ button {
     offset-path: none;
   }
 }
+
 .modal h2 {
   border-bottom: 1px solid #ccc;
   padding: 1rem;
   margin: 0;
 }
+
 .modal .content {
   padding: 1rem;
 }
+
 .modal .actions {
   border-top: 1px solid #ccc;
   background: #eee;
   padding: 0.5rem 1rem;
 }
+
 .modal .actions button {
   border: 0;
   background: #78f89f;
@@ -163,6 +168,7 @@ button {
   font-size: 0.8rem;
   line-height: 1;
 }
+
 #centered-toggle-button {
   position: absolute;
 }
