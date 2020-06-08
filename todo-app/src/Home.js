@@ -37,8 +37,9 @@ class Home extends Component {
       .then(res => {
         if (res && res.success) {
           var newState = this.state.todos;
-          newState.push(res)
+          newState.push(res.list)
           this.setState({ newState });
+          window.location.reload(false);
         }
       })
     //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));
@@ -59,6 +60,7 @@ class Home extends Component {
             }
           })
           this.setState({ newState });
+          window.location.reload(false);
         }
       })
     //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));

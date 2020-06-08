@@ -24,6 +24,9 @@ export const GlobalStyles = createGlobalStyle`
   }
   .list{
     background: ${({ theme }) => theme.listColor};
+    color: ${({ theme }) => theme.text};
+    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transition: all 0.25s linear;
   }
   .header-wrapper{
     background: ${({ theme }) => theme.headerColor};

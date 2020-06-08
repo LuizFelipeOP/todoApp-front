@@ -46,16 +46,19 @@ const ApiService = {
             'Content-Type': 'application/json',
         }
 
-        return axios.put(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, tarefa, { headers: headers })
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(
-                error =>
-                    alert(error)
-                //console.log(error),
-                //PopUp.showMessage('error', 'Falha ao comunicar com o servidor')
-            );
+
+        return fetch(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, { method: 'PUT', headers: { 'content-type': 'application/json' }, body: tarefa })
+            .then(res => ApiService.ErrorLog(res))
+            .then(res => res.json());
+
+
+        // return axios.put(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, tarefa, { headers: headers })
+        //     .catch(
+        //         error =>
+        //             alert(error)
+        //console.log(error),
+        //PopUp.showMessage('error', 'Falha ao comunicar com o servidor')
+        // );
         // return fetch(`https://to-do-app-api.herokuapp.com/list/:${id}/task`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: tarefa })
         //     .then(res => ApiService.ErrorLog(res))
         //     .then(res => res.json());

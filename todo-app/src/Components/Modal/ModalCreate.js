@@ -22,8 +22,8 @@ const ModalCreate = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form >
-                        <input name="list" placeholder="Nome da lista" type="text" onChange={props.inputListenerList} />
-                        <input name="task" placeholder="Nome da tarefa" type="text" onChange={props.inputListenerList} />
+                        <input name="list" className="modal-input" placeholder="Nome da lista" type="text" onChange={props.inputListenerList} />
+                        <input name="task" className="modal-input" placeholder="Nome da tarefa" type="text" onChange={props.inputListenerList} />
                         <button id="ok" onClick={props.onSaveCreateList}><FiCheck /></button>
                         <button id="delete" onClick={handleClose}><FiX /></button>
                     </form>

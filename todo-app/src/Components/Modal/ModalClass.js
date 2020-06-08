@@ -55,9 +55,12 @@ class ModalClass extends Component {
         this.description = value;
     }
     onSaveCreateList = (event) => {
+        event.preventDefault();
         this.props.submitListenerList(this.state);
         this.setState(this.stateInicial);
-        event.target.firstChild.value = "";
+        //window.location.reload(false);
+
+        document.querySelectorAll(".modal-input").value = "";
     }
     onSaveEditTask = (event) => {
         event.preventDefault();

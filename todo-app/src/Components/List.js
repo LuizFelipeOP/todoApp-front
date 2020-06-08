@@ -10,16 +10,18 @@ const ListBody = props => {
         return (
             <Fragment>
                 <div className="list">
-                    <button id="delete-list" onClick={() => { props.removeList(item._id) }}><FiTrash2 /></button>
                     <ul key={indexList}>
-                        <p>{item.name}</p>
+                        <div className="list-title-wrapper">
+                            <p>{item.name}</p>
+                            <button id="delete-list" onClick={() => { props.removeList(item._id) }}><FiTrash2 /></button>
+                        </div>
                         {
                             item.task.map((tarefa, indexItem) => {
                                 return (
-                                    <label class="container">
+                                    <label className="container">
                                         <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
                                         <input type="checkbox" />
-                                        <span class="checkmark"></span>
+                                        <span className="checkmark"></span>
                                     </label>
                                 )
                             })

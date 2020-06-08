@@ -18,6 +18,21 @@ p {
 .task-wrapper {
     text-align: center;
     font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.task-wrapper > .task-item{
+    flex: 1;
+    align-self: flex-start;
+}
+.list-title-wrapper{
+    display: flex;
+    margin: 16px;
+    justify-content: space-between;
+
+}
+.list-title-wrapper > p{ 
+    overflow: hidden;
 }
   
 .container {
