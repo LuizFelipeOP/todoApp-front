@@ -16,7 +16,7 @@ const ListBody = props => {
                         {
                             item.task.map((tarefa, indexItem) => {
                                 return (
-                                    <TaskListItem taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
+                                    <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
                                 )
                             })
                         }
@@ -43,6 +43,7 @@ class List extends Component {
                 <ListBody
                     selectTask={this.selectTask}
                     list={list}
+                    editTask={this.props.editTask}
                     submitListenerTask={this.props.submitListenerTask}
                     removeTask={this.props.removeTask}
                     removeList={this.props.removeList} />

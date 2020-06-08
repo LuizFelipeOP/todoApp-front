@@ -3,9 +3,6 @@ import './App.css';
 import List from './Components/List';
 import ModalClass from './Components/Modal/ModalClass';
 import ApiService from './APIService';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './Utils/Theme';
-import { GlobalStyles } from './Utils/Global';
 import ThemeSwitch from './Components/Theme/ThemeSwitch'
 class Home extends Component {
 
@@ -42,14 +39,19 @@ class Home extends Component {
       })
     //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));
   }
-  editTask = (id, tarefa) => {
-    ApiService.CreateTask(id, JSON.stringify(tarefa))
+  editTask = (id_list, id_task, tarefa) => {
+    ApiService.EditTask(id_task, JSON.stringify(tarefa))
       .then(res => {
         if (res && res.success) {
           var newState = this.state.todos;
           newState.map((item) => {
-            if (item._id === id) {
-              item.task.push(res.tasks[0])
+            if (item._id === id_list) {
+              item.task.map((task, index) => {
+                if (task._id === id_task) {
+                  item.task.splice(index, 1);
+                  item.task.push(res.task)
+                }
+              })
             }
           })
           this.setState({ newState });
@@ -126,6 +128,7 @@ class Home extends Component {
             submitListenerTask={this.submitListenerTask}
             removeTask={this.removeTask}
             removeList={this.removeList}
+            editTask={this.editTask}
           ></List>
         </div>
       </Fragment>

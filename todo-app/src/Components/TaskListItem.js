@@ -27,7 +27,8 @@ class TaskListItem extends Component {
                     list={this.props.item}
                     title={'Edite a tarefa'}
                     id_task={this.props.id_task}
-                    submitListenerList={this.submitListenerList}
+                    id_list={this.props.id_list}
+                    editTask={this.props.editTask}
                     description={this.props.description}
                 />
                 <button onClick={() => { this.props.removeTask(this.props.id_list, this.props.id_task) }} >

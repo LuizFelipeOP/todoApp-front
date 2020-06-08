@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import '../../App.css';
 import ModalCreate from './ModalCreate';
 import ModalEdit from './ModalEdit';
@@ -17,15 +17,32 @@ class ModalClass extends Component {
     }
 
     inputListenerList = event => {
-        const { value } = event.target;
-        this.setState({
-            name: value,
-            task: Array
-        });
+        var valueList;
+        var valueTask;
+
+        if (event.target.name === 'list') {
+            valueList = event.target.value;
+
+            this.setState({
+                name: valueList,
+            });
+        }
+
+        if (event.target.name === 'task') {
+            valueTask = event.target.value;
+            this.setState({
+                task: [
+                    {
+                        name: valueTask,
+                        description: valueTask
+                    }
+                ]
+            });
+
+        }
 
     }
     inputListenerTask = event => {
-        debugger
         const { value } = event.target;
         this.setState({
             task: [
@@ -37,24 +54,25 @@ class ModalClass extends Component {
         });
         this.description = value;
     }
-    onSave = (event) => {
+    onSaveCreateList = (event) => {
+        this.props.submitListenerList(this.state);
+        this.setState(this.stateInicial);
+        event.target.firstChild.value = "";
+    }
+    onSaveEditTask = (event) => {
         event.preventDefault();
-        this.props.submitListenerList(this.state);
+        this.props.editTask(this.props.id_list, this.props.id_task, this.state);
         this.setState(this.stateInicial);
         event.target.firstChild.value = "";
     }
-    startEditInputValue = (event) => {
-        this.props.submitListenerList(this.state);
-        this.setState(this.stateInicial);
-        event.target.firstChild.value = "";
-    }
+
     render() {
 
         if (this.props.modalType === "create") {
             return (
                 <ModalCreate
-                    onSave={this.onSave}
                     title={this.props.title}
+                    onSaveCreateList={this.onSaveCreateList}
                     inputListenerList={this.inputListenerList}
                 />
             );
@@ -62,12 +80,11 @@ class ModalClass extends Component {
         if (this.props.modalType === "edit") {
             return (
                 <ModalEdit
-                    onSave={this.onSave}
                     title={this.props.title}
                     id_task={this.props.id_task}
                     description={this.description}
+                    onSaveEditTask={this.onSaveEditTask}
                     inputListenerList={this.inputListenerTask}
-                    startEditInputValue={this.startEditInputValue}
                 />
             );
         }
