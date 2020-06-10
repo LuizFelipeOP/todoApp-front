@@ -31,7 +31,7 @@ class List extends Component {
         event.preventDefault();
         this.props.submitListenerTask(this.props.list._id, this.state);
         this.setState(this.stateInicial);
-        event.target.firstChild.value = "";
+        event.target.querySelector('input').value = "";
     }
 
     render() {

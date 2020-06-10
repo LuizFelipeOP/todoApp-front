@@ -22,7 +22,7 @@ const ModalCreate = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form >
-                        <input value={props.description} name="name" type="text" onChange={props.inputListenerList} />
+                        <input className="modal-input" value={props.description} name="name" type="text" onChange={props.inputListenerList} />
                         <button onClick={props.onSaveEditTask}><FiCheck /></button>
                         <button onClick={handleClose}><FiX /></button>
                     </form>

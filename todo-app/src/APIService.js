@@ -1,16 +1,22 @@
 import axios from 'axios';
 
+
 const ApiService = {
     Get: () => {
         return axios.get(`https://to-do-app-api.herokuapp.com/`)
-            .then((res => res.data))
+            .then(res => res.data)
     },
-    CreateTask: (id, tarefa) => {
+    GetList: (id_list) => {
+        return axios.get(`https://to-do-app-api.herokuapp.com/list/${id_list}`)
+            .then((res => res.data))
+
+    },
+    CreateTask: (id_list, tarefa) => {
         const headers = {
             'Content-Type': 'application/json',
         }
 
-        return axios.post(`https://to-do-app-api.herokuapp.com/list/${id}/task`, tarefa, { headers: headers })
+        return axios.post(`https://to-do-app-api.herokuapp.com/list/${id_list}/task`, tarefa, { headers: headers })
             .then(res => res.data)
             .catch(
                 error =>
@@ -46,19 +52,12 @@ const ApiService = {
             'Content-Type': 'application/json',
         }
 
-
-        return fetch(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, { method: 'PUT', headers: { 'content-type': 'application/json' }, body: tarefa })
-            .then(res => ApiService.ErrorLog(res))
-            .then(res => res.json());
-
-
-        // return axios.put(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, tarefa, { headers: headers })
-        //     .catch(
-        //         error =>
-        //             alert(error)
-        //console.log(error),
-        //PopUp.showMessage('error', 'Falha ao comunicar com o servidor')
-        // );
+        return axios.put(`https://to-do-app-api.herokuapp.com/list/task/${id_task}`, tarefa, { headers: headers })
+            .then(res => res.data)
+            .catch(
+                error =>
+                    alert(error)
+            );
         // return fetch(`https://to-do-app-api.herokuapp.com/list/:${id}/task`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: tarefa })
         //     .then(res => ApiService.ErrorLog(res))
         //     .then(res => res.json());

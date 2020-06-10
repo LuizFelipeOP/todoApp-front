@@ -7,7 +7,12 @@ import './Styles/Modal.css';
 import List from './Components/List';
 import ModalClass from './Components/Modal/ModalClass';
 import ApiService from './APIService';
-import ThemeSwitch from './Components/Theme/ThemeSwitch'
+import ThemeSwitch from './Components/Theme/ThemeSwitch';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 class Home extends Component {
 
   constructor(props) {
@@ -15,6 +20,29 @@ class Home extends Component {
     this.state = {
       todos: [],
     };
+  }
+  notifySuccess = (title) => {
+    toast.info(title, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+  notifyWarning = (title) => {
+    toast.warn(title, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   submitListenerTask = (id, tarefa) => {
@@ -28,42 +56,46 @@ class Home extends Component {
             }
           })
           this.setState({ newState });
+          this.notifySuccess('Tarefa adicionada com sucesso!');
         }
       })
-    //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));
+      .catch(error => this.notifyWarning(error));
   }
   submitListenerList = (list) => {
     ApiService.CreateList(JSON.stringify(list))
       .then(res => {
         if (res && res.success) {
-          var newState = this.state.todos;
-          newState.push(res.list)
-          this.setState({ newState });
-          window.location.reload(false);
+          ApiService.GetList(res.list._id)
+            .then(newList => {
+              var newState = this.state.todos;
+              newState.push(newList.list)
+              this.setState({ newState });
+              this.notifySuccess('Lista adicionada com sucesso!');
+
+            })
         }
       })
-    //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));
+      .catch(error => this.notifyWarning(error));
   }
   editTask = (id_list, id_task, tarefa) => {
     ApiService.EditTask(id_task, JSON.stringify(tarefa))
       .then(res => {
         if (res && res.success) {
-          var newState = this.state.todos;
-          newState.map((item) => {
-            if (item._id === id_list) {
-              item.task.map((task, index) => {
-                if (task._id === id_task) {
-                  item.task.splice(index, 1);
-                  item.task.push(res.task)
+          ApiService.GetList(id_list)
+            .then(newList => {
+              var newState = this.state.todos;
+              newState.map((item, index) => {
+                if (item._id === id_list) {
+                  newState.splice(index, 1, newList.list);
                 }
               })
-            }
-          })
-          this.setState({ newState });
-          window.location.reload(false);
+              this.setState({ newState });
+              this.notifySuccess('Tarefa editada com sucesso!');
+
+            })
         }
       })
-    //.catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'));
+      .catch(error => this.notifyWarning(error));
   }
   removeTask = (id_list, id_task) => {
     const { todos } = this.state;
@@ -81,10 +113,10 @@ class Home extends Component {
       .then(res => {
         if (res && res.success) {
           this.setState({ todos: [...ListAtualizado] })
-          //PopUp.showMessage('success', 'Livro removido com sucesso');
+          this.notifySuccess('Tarefa removida com sucesso!');
         }
       })
-    // .catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'))
+      .catch(error => this.notifyWarning(error));
   }
   removeList = (id_list) => {
     const { todos } = this.state;
@@ -97,10 +129,10 @@ class Home extends Component {
       .then(res => {
         if (res && res.success) {
           this.setState({ todos: [...ListAtualizado] })
-          //PopUp.showMessage('success', 'Livro removido com sucesso');
+          this.notifySuccess('Lista removida com sucesso!');
         }
       })
-    // .catch(error => PopUp.showMessage('error', 'Falha ao comunicar com o servidor'))
+      .catch(error => this.notifyWarning(error));
   }
 
   componentDidMount() {
@@ -108,11 +140,8 @@ class Home extends Component {
       .then(res => {
         this.setState({ todos: res })
       })
-      .catch(
-        error =>
-          alert(error),
-        //PopUp.showMessage('error', 'Falha ao comunicar com o servidor')
-      );
+      .catch(error => this.notifyWarning(error));
+
   }
 
   render() {
@@ -120,6 +149,7 @@ class Home extends Component {
     return (
       <Fragment>
         <div className="App">
+          <ToastContainer />
           <div className="header-wrapper">
             <ThemeSwitch />
             <h2 id="title">To-do App</h2>

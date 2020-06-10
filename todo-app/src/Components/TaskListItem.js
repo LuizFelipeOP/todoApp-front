@@ -4,23 +4,11 @@ import ModalClass from './Modal/ModalClass';
 
 class TaskListItem extends Component {
 
-    selectTask = event => {
-        if (event.target.style.transform === 'translateX(0px)' || event.target.style.transform === '') {
-            event.target.style.transform = 'translateX(-60px)';
-            //const button = this.buttons(true);
-
-        } else {
-            event.target.style.transform = 'translateX(0px)';
-            //this.buttons(false);
-        }
-
-
-    }
 
     render() {
         return (
             <div className={"task-wrapper"}>
-                <li className={"task-item task-item_" + this.props.id_task} onClick={this.selectTask} key={this.props.taskId}>{this.props.description} </li>
+                <li className={"task-item task-item_" + this.props.id_task} key={this.props.taskId}>{this.props.description} </li>
                 <div>
                     <ModalClass
                         modalType={'edit'}
