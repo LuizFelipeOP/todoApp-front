@@ -68,7 +68,10 @@ class ModalClass extends Component {
         this.props.editTask(this.props.id_list, this.props.id_task, this.state);
         this.setState(this.stateInicial);
     }
-
+    getDescription = (event) => {
+        debugger
+        return event.target.parentElement.children[1].innerText;
+    }
     render() {
 
         if (this.props.modalType === "create") {
@@ -85,6 +88,21 @@ class ModalClass extends Component {
                 <ModalEdit
                     title={this.props.title}
                     id_task={this.props.id_task}
+                    id_list={this.props.id_list}
+                    description={this.description}
+                    onSaveEditTask={this.onSaveEditTask}
+                    inputListenerList={this.inputListenerTask}
+                />
+            );
+        }
+        if (this.props.modalType === "detail") {
+            return (
+                <ModalEdit
+                    title={this.props.title}
+                    getDescription={this.getDescription}
+                    id_task={this.props.id_task}
+                    id_list={this.props.id_list}
+                    removeTask={this.props.removeTask}
                     description={this.description}
                     onSaveEditTask={this.onSaveEditTask}
                     inputListenerList={this.inputListenerTask}

@@ -112,7 +112,7 @@ class Home extends Component {
     ApiService.RemoveTask(id_list, id_task)
       .then(res => {
         if (res && res.success) {
-          this.setState({ todos: [...ListAtualizado] })
+          this.setState({ ListAtualizado })
           this.notifySuccess('Tarefa removida com sucesso!');
         }
       })
@@ -128,7 +128,7 @@ class Home extends Component {
     ApiService.RemoveList(id_list)
       .then(res => {
         if (res && res.success) {
-          this.setState({ todos: [...ListAtualizado] })
+          this.setState({ ListAtualizado })
           this.notifySuccess('Lista removida com sucesso!');
         }
       })

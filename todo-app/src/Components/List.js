@@ -18,11 +18,7 @@ const ListBody = props => {
                         {
                             item.task.map((tarefa, indexItem) => {
                                 return (
-                                    <label className="container">
-                                        <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
-                                        <input type="checkbox" />
-                                        <span className="checkmark"></span>
-                                    </label>
+                                    <TaskListItem editTask={props.editTask} taskId={indexItem} removeTask={props.removeTask} id_list={item._id} id_task={tarefa._id} description={tarefa.description} />
                                 )
                             })
                         }

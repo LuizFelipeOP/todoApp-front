@@ -16,7 +16,10 @@ const ModalCreate = (props) => {
                     <FiPlus />
                 </button>
             </label>
-            <Modal show={show} onHide={handleClose}>
+            <Modal
+                show={show}
+                onHide={handleClose}
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>{props.title}</Modal.Title>
                 </Modal.Header>
